@@ -2,8 +2,26 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    text-align: center;
+    place-content: center;
 }
 
 h1 {
     color: blue;
+}
+
+#gameboard {
+    display: grid;
+    width: 100%;
+    height: 500px;
+
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+
+    
+}
+
+.gametiles {
+    border: 1px solid black;
+    padding: 10px;
 }
