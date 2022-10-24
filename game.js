@@ -4,6 +4,8 @@ let numberOfTurns = 0;
 const restartBtn = document.querySelector('#restartBtn');
 const declareDiv = document.getElementById('declare');
 
+let gameOutcome = 'null';
+
 //Module to check gameboard
 const gameBoard = (() => {
     //Use array to fill Xs and Os where indices will act as positions (ids of tiles)
@@ -76,6 +78,8 @@ const gameFlow = (() => {
     }
 
     const declareWinner = (winner) => {
+
+        gameOutcome = 'win';
         const winnerText = document.createElement('h2');
         winnerText.textContent = `${winner} wins the game!`;
         winnerText.id = 'winner';
@@ -84,6 +88,8 @@ const gameFlow = (() => {
     }
 
     const declareDraw = () => {
+
+        gameOutcome = 'draw'
         const drawText = document.createElement('h2');
         drawText.textContent = "It's a draw! Try again";
         drawText.id = 'draw';
@@ -163,9 +169,13 @@ restartBtn.addEventListener('click', () => {
 
     currentSymbol = 'X';
 
-    const winnerText = document.getElementById('winner');
-    declareDiv.removeChild(winnerText);
+    if (gameOutcome === 'win') {
+        const winnerText = document.getElementById('winner');
+        declareDiv.removeChild(winnerText);
+    }
 
-    const drawText = document.getElementById('draw');
-    declareDiv.removeChild(drawText);
+    if (gameOutcome === 'draw') {
+        const drawText = document.getElementById('draw');
+        declareDiv.removeChild(drawText);
+    }
 })
